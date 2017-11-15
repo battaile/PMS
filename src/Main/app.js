@@ -52,7 +52,7 @@ const App = React.createClass({
               {renderProduct ? <li><Link to='product'>Products</Link></li> : null}
               {renderRules && <li><Link to='rules'>Rules</Link></li>}
               <li><Link to='diagramtool'>Diagram Tool</Link></li>
-              {renderGoogle && <li><Link to='google'>Google Shopping</Link> </li> }
+              {renderGoogle && <li><Link to='google' target='_blank' >Google Shopping</Link> </li> }
             </ul>
             <ul className='nav navbar-nav navbar-right'>
               {auth.loggedIn() ? <li><Link to='user'><span className='glyphicon glyphicon-user' /> {localStorage.username}</Link></li> : null}
