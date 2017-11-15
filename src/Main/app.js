@@ -63,12 +63,11 @@ const App = React.createClass({
         {this.props.children}
       </div>
     </div>)
+  },
+  propTypes: {
+    children: React.PropTypes.object
   }
 })
-
-App.propTypes = {
-  children: React.PropTypes.object
-}
 
 const Logout = React.createClass({
   componentDidMount () {
