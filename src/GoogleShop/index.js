@@ -1,28 +1,29 @@
 import React from 'react'
+import GoogleShopPanel from './GoogleShopPanel'
+import Loadable from 'react-loading-overlay'
 
-const GoogleShop = () => (
-  <div className="container" style={{width:'50%'}}>
-    <div className="panel panel-default">
-      <div className="panel-heading">Currently Listed</div>
-      <div className="panel-body">
-        <div className="row">
-          <div className="col-sm-5">
-            <strong>Select a Vendor</strong><br/>
-            <select className="formControl" style={{width:'13em'}}>
-              <option>--</option>
-            </select>
-          </div>
-          <div className="col-sm-2" style={{ paddingTop:'.5em' }}><strong>OR</strong></div>
-          <div className="col-sm-5">
-            <strong>Select a Site</strong><br/>
-            <select className="formControl" style={{width:'13em'}}>
-              <option>--</option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-)
+class GoogleShop extends React.Component {
+  constructor(){
+    super()
+    this.state = { 
+      vendors: null
+    }
+  }
 
-export default GoogleShop;
+  componentDidMount(){
+    GetVendorList((vendors) => this.setState({vendors}))
+  }
+
+  render() {
+    const loading = !this.vendors;
+    const spinnerText = 'Loading vendors...';
+
+    return  (
+      <Loadable active={loading} spinner text={spinnerText}>
+        <GoogleShopPanel vendors={this.state.vendors} />
+      </Loadable>
+    )
+  }
+}
+
+export default GoogleShop

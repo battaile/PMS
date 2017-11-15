@@ -17,6 +17,7 @@
     "console": true,
     "module": true,
     "API_HOST": true,
-    "localStorage": true
+    "localStorage": true,
+    "GetVendorList": true,
   }
 }
