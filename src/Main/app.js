@@ -31,11 +31,12 @@ const App = React.createClass({
     auth.login()
   },
   render: function () {
-    var renderImport, renderCatalog, renderProduct, renderRules
+    var renderImport, renderCatalog, renderProduct, renderRules, renderGoogle
     if (auth.loggedIn() == true && localStorage.ImportVisibility == 'true') { renderImport = true } else { renderImport = false }
     if (auth.loggedIn() == true && localStorage.CatalogVisibility == 'true') { renderCatalog = true } else { renderCatalog = false }
     if (auth.loggedIn() == true && localStorage.ProductVisibility == 'true') { renderProduct = true } else { renderProduct = false }
     if (auth.loggedIn() == true && localStorage.RuleVisibility == 'true') { renderRules = true } else { renderRules = false }
+    if (auth.loggedIn() == true && localStorage.GoogleShopVisibility == 'true' ) { renderGoogle = true } else { renderGoogle = false }
     return (<div>
       <div className='navbar navbar-default navbar-static-top'>
         <div className='container'>
@@ -50,6 +51,7 @@ const App = React.createClass({
               {renderProduct ? <li><Link to='product'>Products</Link></li> : null}
               {renderRules && <li><Link to='rules'>Rules</Link></li>}
               <li><Link to='diagramtool'>Diagram Tool</Link></li>
+              {renderGoogle && <li><Link to='google'>Google Shopping</Link> </li> }
             </ul>
             <ul className='nav navbar-nav navbar-right'>
               {auth.loggedIn() ? <li><Link to='user'><span className='glyphicon glyphicon-user' /> {localStorage.username}</Link></li> : null}

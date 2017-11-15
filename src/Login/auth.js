@@ -19,6 +19,8 @@ module.exports = {
 
         if (typeof res.permissions.find(this.findRuleVisibility) !== 'undefined') { localStorage.RuleVisibility = 'true' } else { localStorage.RuleVisibility = 'false' }
 
+        if (typeof res.permissions.find(this.googleShopVisibility) !== 'undefined') { localStorage.GoogleShopVisibility = 'true' } else { localStorage.GoogleShopVisibility = 'false' }
+
         if (typeof res.permissions.find(this.findStoreEditing) !== 'undefined') { localStorage.StoreEditing = 'true' } else { localStorage.StoreEditing = 'false' }
 
         if (typeof res.permissions.find(this.findCatalogEditing) !== 'undefined') { localStorage.CatalogEditing = 'true' } else { localStorage.CatalogEditing = 'false' }
@@ -69,6 +71,9 @@ module.exports = {
   findRuleVisibility (obj) {
     return obj.permission_id === 10;
   },
+  googleShopVisibility (obj) {
+    return obj.permission_id === 11;
+  },
   getToken () {
     return localStorage.token
   },
@@ -79,6 +84,7 @@ module.exports = {
     delete localStorage.ImportVisibility
     delete localStorage.CatalogVisibility
     delete localStorage.ProductVisibility
+    delete localStorage.GoogleShopVisibility
     delete localStorage.StoreEditing
     delete localStorage.CatalogEditing
     delete localStorage.ProductEditing
@@ -86,6 +92,7 @@ module.exports = {
     delete localStorage.Disable
     delete localStorage.Lock
     delete localStorage.RuleVisibility
+    
     if (cb) cb()
     this.onChange(false)
   },
