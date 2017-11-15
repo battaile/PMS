@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { browserHistory, Router, Route, Link, withRouter, IndexRoute } from 'react-router'
+import { browserHistory, Router, Route, Link, IndexRoute } from 'react-router'
 import CatalogMain from './visualize'
 import ImportMain from '../Import/importmain'
 import ImportNew from '../Import/newimport'
