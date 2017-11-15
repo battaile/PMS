@@ -11,6 +11,7 @@ import UserAdminMain from '../UserAdmin/useradminmain'
 import ProductStandAlone from '../Product/product-stand-alone'
 import RulesMain from '../Rules/rulesmain'
 import DiagramMain from '../DiagramTool/main'
+import GoogleShop from '../GoogleShop/'
 
 const App = React.createClass({
   getInitialState () {
@@ -105,6 +106,7 @@ render(
       <Route path='/product-detail' component={ProductStandAlone} onEnter={requireAuth} />
       <Route path='/rules' component={RulesMain} onEnter={requireAuth} />
       <Route path='/diagramtool' component={DiagramMain} onEnter={requireAuth} />
+      <Route path='/google' component={GoogleShop} onEnter={requireAuth} />
     </Route>
   </Router>
 , document.getElementById('root'))
