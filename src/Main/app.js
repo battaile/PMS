@@ -23,7 +23,9 @@ const App = React.createClass({
       loggedIn
     })
   },
+  
   componentWillMount () {
+    // eslint-disable-next-line no-console
     console.disableYellowBox = true
     auth.onChange = this.updateAuth
     auth.login()
