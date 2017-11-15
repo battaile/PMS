@@ -14,8 +14,9 @@
     "fetch": true,
     "Request": true,
     "document": true,
-    "localStorage": true,
     "console": true,
-    "module": true
+    "module": true,
+    "API_HOST": true,
+    "localStorage": true
   }
 }
