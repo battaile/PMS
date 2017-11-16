@@ -19,5 +19,6 @@
     "API_HOST": true,
     "localStorage": true,
     "GetVendorList": true,
+    "GetStoreLookups": true
   }
 }
