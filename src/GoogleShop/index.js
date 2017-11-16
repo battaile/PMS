@@ -15,9 +15,9 @@ class GoogleShop extends React.Component {
   }
 
   render() {
-    const loading = !this.vendors;
+    const loading = !this.state.vendors;
     const spinnerText = 'Loading vendors...';
-
+    console.log('loading=' + loading)
     return  (
       <Loadable active={loading} spinner text={spinnerText}>
         <GoogleShopPanel vendors={this.state.vendors} />

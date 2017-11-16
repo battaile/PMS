@@ -16,13 +16,13 @@ const GoogleShopPanel = ({vendors}) => (
     <div className="panel-heading">Currently Listed</div>
     <div className="panel-body">
       <div className="row">
-        <div className="col-sm-5">
+        <div className="col-md-5">
           <strong>Select a Vendor</strong><br/>
-          <VendorDropdown vendors={vendors} />
+          { <VendorDropdown vendors={vendors} /> }
           
         </div>
-        <div className="col-sm-2" style={{ paddingTop:'.5em' }}><strong>OR</strong></div>
-        <div className="col-sm-5">
+        <div className="col-md-2" style={{ paddingTop:'.5em' }}><strong>OR</strong></div>
+        <div className="col-md-5">
           <strong>Select a Site</strong><br/>
           <select className="formControl" style={{width:'13em'}}>
             <option>--</option>
