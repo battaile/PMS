@@ -4,6 +4,7 @@ const url = 'http://localhost:65515'
 // Production
 // export const url = 'http://192.168.2.16:84'
 
+/* eslint no-unused-vars: 0 */
 function getNodes (nodeLevel, docKey, nodeName, storeId, disabled, showDisabled, persistResults, callback) {
   $.getJSON(url + '/api/Pms/Get', { nodeLevel: nodeLevel, storeId: storeId, disabled: disabled, showDisabled: showDisabled, docKey: docKey, token: localStorage.token })
       .done(function (data) { callback(data, docKey, nodeName, persistResults) })
@@ -927,3 +928,15 @@ function GetVendors (callback) {
      }
    })
 }
+
+function GetGoogleSummary (callback) {
+  $.getJSON(url + '/api/GoogleShop/Summary', {token: localStorage.token })
+    .done(function (data) { callback(data) })
+  .fail(function (data) {
+  if (data.status == '401') {
+    localStorage.clear()
+    window.location.href = '/'
+  }
+  })  
+}
+/* eslint no-unused-vars: 1 */
