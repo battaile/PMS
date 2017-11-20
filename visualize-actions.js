@@ -932,11 +932,11 @@ function GetVendors (callback) {
 function GetGoogleSummary (callback) {
   $.getJSON(url + '/api/GoogleShop/Summary', {token: localStorage.token })
     .done(function (data) { callback(data) })
-  .fail(function (data) {
-  if (data.status == '401') {
-    localStorage.clear()
-    window.location.href = '/'
-  }
+    .fail(function (data) {
+    if (data.status == '401') {
+      localStorage.clear()
+      window.location.href = '/'
+    }
   })  
 }
 /* eslint no-unused-vars: 1 */
