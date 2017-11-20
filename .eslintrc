@@ -20,7 +20,7 @@
     "localStorage": true,
     "GetVendorList": true,
     "GetStoreLookups": true,
-    "GetGoogleShopItems": true,
+    "GetGoogleSummary": true,
     "$": true
   }
 }
