@@ -147,17 +147,6 @@ function GetStoreLookups (callback) {
    })
 }
 
-function GetGoogleShopItems (filters, callback) {
-  return $.getJSON(url + '/api/GoogleShop/Items', { token: localStorage.token, ...filters } )
-    .done(function (data) { callback(data) })
-  .fail(function (data) {
-    if (data.status == '401') {
-      localStorage.clear()
-      window.location.href = '/'
-    }
-  })
-}
-
 function GetCatalogNodeTypes (callback) {
   return $.getJSON(url + '/api/Pms/GetCatalogNodeTypes', { token: localStorage.token })
       .done(function (data) { callback(data) })
