@@ -21,6 +21,7 @@
     "GetVendorList": true,
     "GetStoreLookups": true,
     "GetGoogleSummary": true,
-    "$": true
+    "$": true,
+    "setTimeout": true
   }
 }

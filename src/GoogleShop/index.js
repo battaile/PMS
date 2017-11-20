@@ -1,4 +1,5 @@
 import React from "react";
+import StoreSummary from './StoreSummary';
 
 class GoogleShop extends React.Component {
   constructor(props) {
@@ -17,8 +18,8 @@ class GoogleShop extends React.Component {
 
   render() {
     return (
-      <div style={{width: '50%', textAlign:'center'}}>test
-        {this.state.summary.map(s => <div><h4> {s.name} </h4></div>)}
+      <div style={{width: '50%', textAlign:'center'}}>
+        {this.state.summary.map(s => <StoreSummary store={s} /> )}
       </div>
     );
   }
