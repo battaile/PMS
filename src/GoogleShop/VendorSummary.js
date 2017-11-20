@@ -1,15 +1,16 @@
 import React, {PropTypes} from 'react'
 
-const VendorSummaryRow = ({vendor}) => (
-  <tr>
-    <td>{vendor.shopping}</td>
-    <td>{vendor.invalid}</td>
-    <td>{vendor.unshopped}</td>
-  </tr>
+const VendorSummary = ({vendor}) => (
+  <div className="row" >
+    <div className="col-xs-3">{vendor.name}</div>
+    <div className="col-xs-3">{vendor.shopping}</div>
+    <div className="col-xs-3">{vendor.invalid}</div>
+    <div className="col-xs-3">{vendor.unshopped}</div>
+  </div>
 )
 
-VendorSummaryRow.propTypes = {
+VendorSummary.propTypes = {
   vendor: PropTypes.object.isRequired
 }
 
-export default VendorSummaryRow;
+export default VendorSummary;

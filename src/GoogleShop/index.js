@@ -18,7 +18,7 @@ class GoogleShop extends React.Component {
 
   render() {
     return (
-      <div style={{width: '50%', textAlign:'center'}}>
+      <div className="container">
         {this.state.summary.map(s => <StoreSummary store={s} /> )}
       </div>
     );

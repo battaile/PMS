@@ -931,12 +931,12 @@ function GetVendors (callback) {
 
 function GetGoogleSummary (callback) {
   const boatHonda = {name: 'Honda', shopping: 10445, invalid: 4, unshopped: 3 }
-  const boatYamaha = {name: 'Honda', shopping: 12485, invalid: 134, unshopped: 0 }
-  const Suzuki = {name: 'Honda', shopping: 40836, invalid: 52, unshopped: 13 }
+  const boatYamaha = {name: 'Yamaha', shopping: 12485, invalid: 134, unshopped: 0 }
+  const Suzuki = {name: 'Suzuki', shopping: 40836, invalid: 52, unshopped: 13 }
   const pzHonda = {name: 'Honda', shopping: 8576, invalid: 3, unshopped: 213 }
-  const Kawa = {name: 'Honda', shopping: 4512, invalid: 19, unshopped: 0 }
-  const Polaris = {name: 'Honda', shopping: 56000, invalid: 24, unshopped: 23 }
-  const pzYamaha = {name: 'Honda', shopping: 569, invalid: 37, unshopped: 3 }
+  const Kawa = {name: 'Kawasaki', shopping: 4512, invalid: 19, unshopped: 0 }
+  const Polaris = {name: 'Polaris', shopping: 56000, invalid: 24, unshopped: 23 }
+  const pzYamaha = {name: 'Yamaha', shopping: 569, invalid: 37, unshopped: 3 }
   const boatVendors = [boatHonda, boatYamaha, Suzuki]
   const pzVendors = [pzHonda, Kawa, Polaris, pzYamaha]
   const pz = {name: 'Partzilla', vendors: pzVendors}
