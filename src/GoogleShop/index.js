@@ -25,7 +25,7 @@ class GoogleShop extends React.Component {
     return (
       <div className="container">
         {!this.state.filter && this.state.summary.map(s => <StoreSummary store={s} setFilter={this.setFilter} /> )}
-        {this.state.filter && <span>filter set</span> }
+        {this.state.filter && <span>filter set: {this.state.filter.vendor} {this.state.filter.status} </span> }
       </div>
     );
   }
