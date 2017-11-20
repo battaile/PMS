@@ -5,6 +5,7 @@ class GoogleShop extends React.Component {
   constructor(props) {
     super(props)
     this.summaryCallback = this.summaryCallback.bind(this)
+    this.setFilter = this.setFilter.bind(this)
     this.state = { summary: []}
   }
 
@@ -16,10 +17,15 @@ class GoogleShop extends React.Component {
     GetGoogleSummary(this.summaryCallback)
   }
 
+  setFilter(filter) {
+    this.setState({filter})
+  }
+
   render() {
     return (
       <div className="container">
-        {this.state.summary.map(s => <StoreSummary store={s} /> )}
+        {!this.state.filter && this.state.summary.map(s => <StoreSummary store={s} setFilter={this.setFilter} /> )}
+        {this.state.filter && <span>filter set</span> }
       </div>
     );
   }

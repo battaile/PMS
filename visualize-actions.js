@@ -942,7 +942,7 @@ function GetGoogleSummary (callback) {
   const pz = {name: 'Partzilla', vendors: pzVendors}
   const boats = {name: 'Boats', vendors: boatVendors}
   const stubStoreSummaries = [pz, boats]
-  setTimeout(() => callback(stubStoreSummaries), 2000); // will be removed once client is tested
+  setTimeout(() => callback(stubStoreSummaries), 500); // will be removed once client is tested
 
   // $.getJSON(url + '/api/GoogleShop/Summary', {token: localStorage.token })
   //   .done(function (data) { callback(data) })
