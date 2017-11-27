@@ -309,8 +309,8 @@ function UpdateWebSent (webSentFlag, storeId, callback) {
    })
 }
 
-function UpdateImportFlag (vendor, import_flag, status_message, callback) {
-  return $.getJSON(url + '/api/Pms/UpdateImportFlag', {vendor: vendor, import_flag: import_flag, status_message: status_message, username: localStorage.username, token: localStorage.token })
+function UpdateImportFlag (vendor, import_flag, status_message, import_type, callback) {
+  return $.getJSON(url + '/api/Pms/UpdateImportFlag', {vendor: vendor, import_flag: import_flag, status_message: status_message, username: localStorage.username, import_type:import_type, token: localStorage.token })
   .done(function (data) { callback(data) })
    .fail(function (data) {
      if (data.status == '401') {
@@ -953,4 +953,26 @@ function GetGoogleSummary (callback) {
   //   }
   // })  
 }
+function GetVendorsAttribute (store,callback) {
+  $.getJSON(url + '/api/Pms/GetVendorsAttribute', {store:store,token: localStorage.token })
+      .done(function (data) { callback(data) })
+   .fail(function (data) {
+     if (data.status == '401') {
+       localStorage.clear()
+       window.location.href = '/'
+     }
+   })
+}
+
+function GetVendorAttributeTree (vendor, store, callback) {
+  $.getJSON(url + '/api/Pms/GetVendorAttributeTree', {vendor:vendor, store:store, token: localStorage.token })
+      .done(function (data) { callback(data) })
+   .fail(function (data) {
+     if (data.status == '401') {
+       localStorage.clear()
+       window.location.href = '/'
+     }
+   })
+
 /* eslint no-unused-vars: 1 */
+}
