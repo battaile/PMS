@@ -32,7 +32,7 @@ const Items = ({ filter, clearFilter, items }) => (
                 borderWidth: ".1em"
               }}
             >
-              <td style={{ columnWidth: "15em" }}>{i.product_id}</td>
+              <td style={{ columnWidth: "15em" }}><span style={{marginLeft:'.5em'}}>{i.product_id}</span></td>
               <td style={{ columnWidth: "35em" }}><input type="text" defaultValue={i.title} style={{width: "95%"}}/></td>
               <td style={{ columnWidth: "50em" }}>
                 <input type="text" defaultValue={i.description} style={{width: "85%", marginTop: '.5em'}} />
