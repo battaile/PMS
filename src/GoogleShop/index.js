@@ -6,6 +6,7 @@ class GoogleShop extends React.Component {
   constructor(props) {
     super(props);
     this.summaryCallback = this.summaryCallback.bind(this);
+    this.itemsCallback = this.itemsCallback.bind(this);
     this.setFilter = this.setFilter.bind(this);
     this.state = { summary: [] };
   }
@@ -14,12 +15,17 @@ class GoogleShop extends React.Component {
     this.setState({ summary });
   }
 
+  itemsCallback(items) {
+    this.setState({ items });
+  }
+
   componentDidMount() {
     GetGoogleSummary(this.summaryCallback);
   }
 
   setFilter(filter) {
     this.setState({ filter });
+    GetGoogleItems(filter, this.itemsCallback);
   }
 
   render() {
@@ -33,6 +39,7 @@ class GoogleShop extends React.Component {
           <Items
             filter={this.state.filter}
             clearFilter={() => this.setFilter(null)}
+            items={this.state.items}
           />}
       </div>
     );

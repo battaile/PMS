@@ -929,30 +929,6 @@ function GetVendors (callback) {
    })
 }
 
-function GetGoogleSummary (callback) {
-  const boatHonda = {name: 'Honda', shopping: 10445, invalid: 4, unshopped: 3, id:1, store_id:1 }
-  const boatYamaha = {name: 'Yamaha', shopping: 12485, invalid: 134, unshopped: 0, id:2, store_id:1 }
-  const Suzuki = {name: 'Suzuki', shopping: 40836, invalid: 52, unshopped: 13, id:3, store_id:1 }
-  const pzHonda = {name: 'Honda', shopping: 8576, invalid: 3, unshopped: 213, id:1, store_id:2 }
-  const Kawa = {name: 'Kawasaki', shopping: 4512, invalid: 19, unshopped: 0, id:4, store_id:2 }
-  const Polaris = {name: 'Polaris', shopping: 56000, invalid: 24, unshopped: 23, id:5, store_id:2 }
-  const pzYamaha = {name: 'Yamaha', shopping: 569, invalid: 37, unshopped: 3, id:2, store_id:2 }
-  const boatVendors = [boatHonda, boatYamaha, Suzuki]
-  const pzVendors = [pzHonda, Kawa, Polaris, pzYamaha]
-  const pz = {name: 'Partzilla', vendors: pzVendors}
-  const boats = {name: 'Boats', vendors: boatVendors}
-  const stubStoreSummaries = [pz, boats]
-  setTimeout(() => callback(stubStoreSummaries), 500); // will be removed once client is tested
-
-  // $.getJSON(url + '/api/GoogleShop/Summary', {token: localStorage.token })
-  //   .done(function (data) { callback(data) })
-  //   .fail(function (data) {
-  //   if (data.status == '401') {
-  //     localStorage.clear()
-  //     window.location.href = '/'
-  //   }
-  // })  
-}
 function GetVendorsAttribute (store,callback) {
   $.getJSON(url + '/api/Pms/GetVendorsAttribute', {store:store,token: localStorage.token })
       .done(function (data) { callback(data) })
@@ -966,13 +942,60 @@ function GetVendorsAttribute (store,callback) {
 
 function GetVendorAttributeTree (vendor, store, callback) {
   $.getJSON(url + '/api/Pms/GetVendorAttributeTree', {vendor:vendor, store:store, token: localStorage.token })
-      .done(function (data) { callback(data) })
-   .fail(function (data) {
-     if (data.status == '401') {
-       localStorage.clear()
-       window.location.href = '/'
-     }
-   })
+    .done(function (data) { callback(data) })
+    .fail(function (data) {
+      if (data.status == '401') {
+        localStorage.clear()
+        window.location.href = '/'
+      }
+  })
+}
+
+function GetGoogleSummary (callback) {
+  const boatHonda = {name: 'Honda', shopping: 10445, invalid: 2, unshopped: 3, id:1, store_id:1 }
+  const boatYamaha = {name: 'Yamaha', shopping: 12485, invalid: 134, unshopped: 0, id:2, store_id:1 }
+  const Suzuki = {name: 'Suzuki', shopping: 40836, invalid: 52, unshopped: 13, id:3, store_id:1 }
+  const pzHonda = {name: 'Honda', shopping: 8576, invalid: 3, unshopped: 213, id:1, store_id:2 }
+  const Kawa = {name: 'Kawasaki', shopping: 4512, invalid: 19, unshopped: 0, id:4, store_id:2 }
+  const Polaris = {name: 'Polaris', shopping: 56000, invalid: 24, unshopped: 23, id:5, store_id:2 }
+  const pzYamaha = {name: 'Yamaha', shopping: 569, invalid: 37, unshopped: 3, id:2, store_id:2 }
+  const boatVendors = [boatHonda, boatYamaha, Suzuki]
+  const pzVendors = [pzHonda, Kawa, Polaris, pzYamaha]
+  const pz = {name: 'Partzilla', vendors: pzVendors}
+  const boats = {name: 'Boats', vendors: boatVendors}
+  const stubStoreSummaries = [pz, boats]
+  setTimeout(() => callback(stubStoreSummaries), 500); // will be removed once client is tested
+  
+    // $.getJSON(url + '/api/GoogleShop/Summary', {token: localStorage.token })
+    //   .done(function (data) { callback(data) })
+    //   .fail(function (data) {
+    //   if (data.status == '401') {
+    //     localStorage.clear()
+    //     window.location.href = '/'
+    //   }
+    // })  
+  }   
+
+  function GetGoogleItems (filter, callback) {
+    const stubItems = [
+      {
+        product_id: '68T-W0078-00-00', 
+        title: '68T-W0078-00-00 WATER PUMP REPAIR KI', 
+        description:'68T-W0078-00-00 WATER PUMP REPAIR KI', 
+        image_link: 'http://cdn.partzilla.com/product/oe-feed/yamaha/yamaha_water_pump.jpg', 
+        product_type:'Vehicles & Parts > Vehicle Parts & Accessories > Motor Vehicle Parts' 
+      },
+      {
+        product_id: '20S-24191-00-00', 
+        title: '20S-24191-00-00 BRACKET, FUEL TANK 1', 
+        description:'Yamaha 20S-24191-00-00 BRACKET, FUEL TANK 1', 
+        image_link: 'http://cdn.boats.net/product/oe-feed/yamaha/yamaha_ps_bracket.jpg', 
+        product_type:'Vehicles & Parts > Vehicle Parts & Accessories > Motor Vehicle Parts' 
+      }
+    ]
+
+    setTimeout(() => callback(stubItems), 500); 
+  }
 
 /* eslint no-unused-vars: 1 */
-}
+

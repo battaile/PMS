@@ -20,8 +20,9 @@
     "localStorage": true,
     "GetVendorList": true,
     "GetStoreLookups": true,
-    "GetGoogleSummary": true,
     "$": true,
-    "setTimeout": true
+    "setTimeout": true,
+    "GetGoogleSummary": true,
+    "GetGoogleItems": true
   }
 }
