@@ -5,10 +5,7 @@ const Items = ({ filter, clearFilter, items }) => (
   <div>
     <div>
       <strong>{filter.vendor.name} {filter.status}</strong>
-      <a
-        onClick={clearFilter}
-        style={{ marginLeft: '1em', cursor: "pointer" }}
-      >
+      <a onClick={clearFilter} style={{ marginLeft: "1em", cursor: "pointer" }}>
         back
       </a>
     </div>
@@ -32,17 +29,29 @@ const Items = ({ filter, clearFilter, items }) => (
                 borderWidth: ".1em"
               }}
             >
-              <td style={{ columnWidth: "15em" }}><span style={{marginLeft:'.5em'}}>{i.product_id}</span></td>
-              <td style={{ columnWidth: "35em" }}><input type="text" defaultValue={i.title} style={{width: "95%"}}/></td>
+              <td style={{ columnWidth: "15em" }}>
+                <span style={{ marginLeft: ".5em" }}>{i.product_id}</span>
+              </td>
+              <td style={{ columnWidth: "35em" }}>
+                <input
+                  type="text"
+                  defaultValue={i.title}
+                  style={{ width: "95%" }}
+                />
+              </td>
               <td style={{ columnWidth: "50em" }}>
-                <input type="text" defaultValue={i.description} style={{width: "85%", marginTop: '.5em'}} />
+                <input
+                  type="text"
+                  defaultValue={i.description}
+                  style={{ width: "85%", marginTop: ".5em" }}
+                />
                 <br />
-                <select style={{margin:'.5em 0 .5em 0'}}>
-                  <option>{i.product_type}</option>  
+                <select style={{ margin: ".5em 0 .5em 0" }}>
+                  <option>{i.product_type}</option>
                   {/* need to actually load product type */}
                 </select>
               </td>
-              <td style={{ columnWidth: "30em", textAlign:'center' }}>
+              <td style={{ columnWidth: "30em", textAlign: "center" }}>
                 {!i.image_link && "Select Image"}
                 {!!i.image_link &&
                   <img
