@@ -26,7 +26,7 @@ class GoogleShop extends React.Component {
     return (
       <div className="container">
         {!this.state.filter && this.state.summary.map(s => <StoreSummary key={s.name} store={s} setFilter={this.setFilter} /> )}
-        {this.state.filter && <Items filter={this.state.filter} /> }
+        {this.state.filter && <Items filter={this.state.filter} clearFilter={() => this.setFilter(null) } /> }
       </div>
     );
   }
