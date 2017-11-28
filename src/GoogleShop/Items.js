@@ -33,11 +33,16 @@ const Items = ({ filter, clearFilter, items }) => (
               }}
             >
               <td style={{ columnWidth: "15em" }}>{i.product_id}</td>
-              <td style={{ columnWidth: "35em" }}><input type="text" defaultValue={i.title}/></td>
+              <td style={{ columnWidth: "35em" }}><input type="text" defaultValue={i.title} style={{width: "95%"}}/></td>
               <td style={{ columnWidth: "50em" }}>
-                {i.description}<br />{i.product_type}
+                <input type="text" defaultValue={i.description} style={{width: "85%", marginTop: '.5em'}} />
+                <br />
+                <select style={{margin:'.5em 0 .5em 0'}}>
+                  <option>{i.product_type}</option>  
+                  {/* need to actually load product type */}
+                </select>
               </td>
-              <td style={{ columnWidth: "30em" }}>
+              <td style={{ columnWidth: "30em", textAlign:'center' }}>
                 {!i.image_link && "Select Image"}
                 {!!i.image_link &&
                   <img
