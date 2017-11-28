@@ -9,61 +9,49 @@ const Items = ({ filter, clearFilter, items }) => (
         back
       </a>
     </div>
-    <table style={{ width: "100%", fontSize: ".8em" }}>
-      <thead>
-        <tr>
-          <th>Item Number</th>
-          <th>Title</th>
-          <th>Description<br />Product Type</th>
-          <th>Image</th>
-        </tr>
-      </thead>
-      <tbody>
-        {items &&
-          items.map(i => (
-            <tr
-              key={i.product_id}
-              style={{
-                borderStyle: "solid",
-                borderColor: "#112300",
-                borderWidth: ".1em"
-              }}
-            >
-              <td style={{ columnWidth: "15em" }}>
-                <span style={{ marginLeft: ".5em" }}>{i.product_id}</span>
-              </td>
-              <td style={{ columnWidth: "35em" }}>
-                <input
-                  type="text"
-                  defaultValue={i.title}
-                  style={{ width: "95%" }}
-                />
-              </td>
-              <td style={{ columnWidth: "50em" }}>
-                <input
-                  type="text"
-                  defaultValue={i.description}
-                  style={{ width: "85%", marginTop: ".5em" }}
-                />
-                <br />
-                <select style={{ margin: ".5em 0 .5em 0" }}>
-                  <option>{i.product_type}</option>
-                  {/* need to load available product types */}
-                </select>
-              </td>
-              <td style={{ columnWidth: "30em", textAlign: "center" }}>
-                {!i.image_link && "Select Image"}
-                {!!i.image_link &&
-                  <img
-                    src={i.image_link}
-                    alt="product image"
-                    style={{ height: "20em", width: "20em" }}
-                  />}
-              </td>
-            </tr>
-          ))}
-      </tbody>
-    </table>
+    {items && items.map( i => (
+      <div className="panel panel-default" style={{padding: '1em'}} >
+        <div className="row" >
+          <div className="col-xs-8">
+          <div className="form-group">
+            <span> <strong><a href="#"> {i.product_id}</a></strong> </span>
+            </div>
+            <div className="form-group">
+              <label htmlFor="title">Title</label>
+              <input className="form-control" id="title"
+                    type="text"
+                    defaultValue={i.title}
+                    style={{width:'25em'}}
+                  />
+            </div>
+            <div className="form-group">
+              <label htmlFor="description">Description</label>
+              <input className="form-control" id="description"
+                    type="text"
+                    defaultValue={i.description}
+                    style={{width:'30em'}}
+                  />
+            </div>
+            <div className="form-group">
+              <label htmlFor="productType">Product Type</label>
+              <select className="form-control" id="productType">
+                    <option>{i.product_type}</option>
+                    {/* need to load available product types */}
+                  </select>
+            </div>
+          </div>
+          <div className="col-xs-4">
+            {!i.image_link && "Select Image"}
+            {!!i.image_link &&
+              <img
+                src={i.image_link}
+                alt="product image"
+                style={{ height: "20em", width: "20em" }}
+              />}        
+          </div>
+        </div>
+      </div>
+    ))}
     {!items && <Loading />}
   </div>
 );
