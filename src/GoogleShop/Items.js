@@ -48,7 +48,7 @@ const Items = ({ filter, clearFilter, items }) => (
                 <br />
                 <select style={{ margin: ".5em 0 .5em 0" }}>
                   <option>{i.product_type}</option>
-                  {/* need to actually load product type */}
+                  {/* need to load available product types */}
                 </select>
               </td>
               <td style={{ columnWidth: "30em", textAlign: "center" }}>
