@@ -1,30 +1,30 @@
 import React, {PropTypes} from 'react'
 
 const VendorSummary = ({vendor, setFilter}) => (
-  <div className="row" >
+  <div className="row" key={vendor.id + '-' + vendor.store_id} >
     <div 
       className="col-xs-3"
        
-      onClick={() => setFilter({vendor:vendor.name, status:''})} 
+      onClick={() => setFilter({vendor:vendor, status:''})} 
     >
     <span style={{cursor: 'pointer'}}> {vendor.name}</span> </div>
 
     <div
       className="col-xs-3" 
       style={{color: 'green', cursor: 'pointer'}} 
-      onClick={() => setFilter({vendor:vendor.name, status:'shopping'})} 
+      onClick={() => setFilter({vendor:vendor, status:'shopping'})} 
     ><span style={{cursor: 'pointer'}}> {vendor.shopping} </span> </div>
 
     <div 
       className="col-xs-3" 
       style={{color: 'red', cursor: 'pointer'}}
-      onClick={() => setFilter({vendor:vendor.name, status:'invalid'})} 
+      onClick={() => setFilter({vendor:vendor, status:'invalid'})} 
     ><span style={{cursor: 'pointer'}}> {vendor.invalid}</span></div>
 
     <div 
       className="col-xs-3" 
       style={{color: 'red', cursor: 'pointer'}}
-      onClick={() => setFilter({vendor:vendor.name, status:'unshopped'})} 
+      onClick={() => setFilter({vendor:vendor, status:'unshopped'})} 
     ><span style={{cursor: 'pointer'}}> {vendor.unshopped}</span></div>
   </div>
 )
