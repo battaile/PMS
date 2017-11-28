@@ -7,30 +7,45 @@ const Items = ({ filter, clearFilter, items }) => (
       <strong>{filter.vendor.name} {filter.status}</strong>
       <a
         onClick={clearFilter}
-        style={{ position: "absolute", right: 0, cursor: "pointer" }}
+        style={{ marginLeft: '1em', cursor: "pointer" }}
       >
         back
       </a>
     </div>
-    <table style={{ width: "100%" }}>
+    <table style={{ width: "100%", fontSize: ".8em" }}>
       <thead>
         <tr>
           <th>Item Number</th>
           <th>Title</th>
-          <th>Description</th>
+          <th>Description<br />Product Type</th>
           <th>Image</th>
-          <th>Product Type</th>
         </tr>
       </thead>
       <tbody>
         {items &&
           items.map(i => (
-            <tr>
-              <td>{i.product_id}</td>
-              <td>{i.title}</td>
-              <td>{i.description}</td>
-              <td>{i.image_link}</td>
-              <td>{i.product_type}</td>
+            <tr
+              key={i.product_id}
+              style={{
+                borderStyle: "solid",
+                borderColor: "#112300",
+                borderWidth: ".1em"
+              }}
+            >
+              <td style={{ columnWidth: "15em" }}>{i.product_id}</td>
+              <td style={{ columnWidth: "35em" }}><input type="text" defaultValue={i.title}/></td>
+              <td style={{ columnWidth: "50em" }}>
+                {i.description}<br />{i.product_type}
+              </td>
+              <td style={{ columnWidth: "30em" }}>
+                {!i.image_link && "Select Image"}
+                {!!i.image_link &&
+                  <img
+                    src={i.image_link}
+                    alt="product image"
+                    style={{ height: "20em", width: "20em" }}
+                  />}
+              </td>
             </tr>
           ))}
       </tbody>

@@ -964,7 +964,7 @@ function GetGoogleSummary (callback) {
   const pz = {name: 'Partzilla', vendors: pzVendors}
   const boats = {name: 'Boats', vendors: boatVendors}
   const stubStoreSummaries = [pz, boats]
-  setTimeout(() => callback(stubStoreSummaries), 500); // will be removed once client is tested
+  setTimeout(() => callback(stubStoreSummaries), 50); // will be removed once client is tested
   
     // $.getJSON(url + '/api/GoogleShop/Summary', {token: localStorage.token })
     //   .done(function (data) { callback(data) })
@@ -991,10 +991,17 @@ function GetGoogleSummary (callback) {
         description:'Yamaha 20S-24191-00-00 BRACKET, FUEL TANK 1', 
         image_link: 'http://cdn.boats.net/product/oe-feed/yamaha/yamaha_ps_bracket.jpg', 
         product_type:'Vehicles & Parts > Vehicle Parts & Accessories > Motor Vehicle Parts' 
+      },
+      {
+        product_id: '20S-24191-00-Z5', 
+        title: '20S-24191-00-00 HINGE', 
+        description:'Yamaha 20S-24191-00-00 HINGE', 
+        image_link: '', 
+        product_type:'Vehicles & Parts > Vehicle Parts & Accessories > Motor Vehicle Parts' 
       }
     ]
 
-    setTimeout(() => callback(stubItems), 500); 
+    setTimeout(() => callback(stubItems), 50); 
   }
 
 /* eslint no-unused-vars: 1 */
