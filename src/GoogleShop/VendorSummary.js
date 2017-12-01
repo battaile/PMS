@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react";
 
 const VendorSummary = ({ vendor, setFilter }) => (
-  <div className="row" key={vendor.id + "-" + vendor.store_id}>
+  <div className="row" key={vendor.vendor_id + "-" + vendor.store_id}>
     <div
       className="col-xs-3"
       onClick={() => setFilter({ vendor: vendor, status: "" })}
@@ -18,7 +18,7 @@ const VendorSummary = ({ vendor, setFilter }) => (
       </span>
     </div>
 
-    <div className="col-xs-3">
+    <div className="col-xs-2">
       <span
         style={{ color: "red", cursor: "pointer" }}
         onClick={() => setFilter({ vendor: vendor, status: "invalid" })}
@@ -27,7 +27,7 @@ const VendorSummary = ({ vendor, setFilter }) => (
       </span>
     </div>
 
-    <div className="col-xs-3">
+    <div className="col-xs-2">
       <span
         style={{ color: "red", cursor: "pointer" }}
         onClick={() => setFilter({ vendor: vendor, status: "unshopped" })}
@@ -35,6 +35,15 @@ const VendorSummary = ({ vendor, setFilter }) => (
         {" "}{vendor.unshopped}
       </span>
     </div>
+
+    <div className="col-xs-2">
+      <span
+        style={{ color: "red", cursor: "pointer" }}
+        onClick={() => setFilter({ vendor: vendor, status: "needs_setup" })}
+      >
+        {" "}{vendor.needs_setup}
+      </span>
+    </div>    
   </div>
 );
 

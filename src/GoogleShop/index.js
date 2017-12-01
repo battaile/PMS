@@ -1,4 +1,5 @@
 import React from "react";
+// import Loadable from "react-loading-overlay";
 import StoreSummary from "./StoreSummary";
 import Items from "./Items";
 
@@ -8,11 +9,11 @@ class GoogleShop extends React.Component {
     this.summaryCallback = this.summaryCallback.bind(this);
     this.itemsCallback = this.itemsCallback.bind(this);
     this.setFilter = this.setFilter.bind(this);
-    this.state = { summary: [] };
+    this.state = { stores: null };
   }
 
-  summaryCallback(summary) {
-    this.setState({ summary });
+  summaryCallback(stores) {
+    this.setState({ stores });
   }
 
   itemsCallback(items) {
@@ -30,18 +31,20 @@ class GoogleShop extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        {!this.state.filter &&
-          this.state.summary.map(s => (
-            <StoreSummary key={s.name} store={s} setFilter={this.setFilter} />
-          ))}
-        {this.state.filter &&
-          <Items
-            filter={this.state.filter}
-            clearFilter={() => this.setFilter(null)}
-            items={this.state.items}
-          />}
-      </div>
+      // <Loadable active={!this.state.stores} spinner text="Loading summary...">
+        <div className="container">
+          {!this.state.filter && this.state.stores &&
+            this.state.stores.map(s => (
+              <StoreSummary key={s.name} store={s} setFilter={this.setFilter} />
+            ))}
+          {this.state.filter &&
+            <Items
+              filter={this.state.filter}
+              clearFilter={() => this.setFilter(null)}
+              items={this.state.items}
+            />}
+        </div>
+      // </Loadable>
     );
   }
 }
