@@ -1,15 +1,17 @@
 import React, { PropTypes } from "react";
 import VendorSummary from "./VendorSummary";
 
+const numbericColumnStyle = {textAlign: 'right'}
+
 const StoreSummary = ({ store, setFilter }) => (
   <div style={{ paddingBottom: "2em", width: "50%" }} key={store.name}>
 
     <div className="row">
       <div className="col-xs-3"><strong>{store.name}</strong></div>
-      <div className="col-xs-3">Shopping</div>
-      <div className="col-xs-2">Invalid</div>
-      <div className="col-xs-2">Not Shopping</div>
-      <div className="col-xs-2">Not Setup</div>
+      <div className="col-xs-3" style={numbericColumnStyle}>Shopping</div>
+      <div className="col-xs-2" style={numbericColumnStyle}>Invalid</div>
+      <div className="col-xs-2" style={numbericColumnStyle}>Not Shopping</div>
+      <div className="col-xs-2" style={numbericColumnStyle}>Needs Setup</div>
     </div>
     {store.vendors.map(v => (
       <VendorSummary
