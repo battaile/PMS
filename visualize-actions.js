@@ -952,43 +952,27 @@ function GetVendorAttributeTree (vendor, store, callback) {
 }
 
 function GetGoogleSummary (callback) {
-    $.getJSON(url + '/api/GoogleShop/Summary', {token: localStorage.token })
-      .done(function (data) { callback(data) })
-      .fail(function (data) {
+  $.getJSON(url + '/api/GoogleShop/Summary', {token: localStorage.token })
+    .done(function (data) { callback(data) })
+    .fail(function (data) {
       if (data.status == '401') {
         localStorage.clear()
         window.location.href = '/'
       }
-    })  
-  }   
+  })  
+}   
 
-  function GetGoogleItems (filter, callback) {
-    const stubItems = [
-      {
-        product_id: '68T-W0078-00-00', 
-        title: '68T-W0078-00-00 WATER PUMP REPAIR KI', 
-        description:'68T-W0078-00-00 WATER PUMP REPAIR KI', 
-        image_link: 'http://cdn.partzilla.com/product/oe-feed/yamaha/yamaha_water_pump.jpg', 
-        product_type:'Vehicles & Parts > Vehicle Parts & Accessories > Motor Vehicle Parts' 
-      },
-      {
-        product_id: '20S-24191-00-00', 
-        title: '20S-24191-00-00 BRACKET, FUEL TANK 1', 
-        description:'Yamaha 20S-24191-00-00 BRACKET, FUEL TANK 1', 
-        image_link: 'http://cdn.boats.net/product/oe-feed/yamaha/yamaha_ps_bracket.jpg', 
-        product_type:'Vehicles & Parts > Vehicle Parts & Accessories > Motor Vehicle Parts' 
-      },
-      {
-        product_id: '20S-24191-00-Z5', 
-        title: '20S-24191-00-00 HINGE', 
-        description:'Yamaha 20S-24191-00-00 HINGE', 
-        image_link: '', 
-        product_type:'Vehicles & Parts > Vehicle Parts & Accessories > Motor Vehicle Parts' 
+function GetGoogleItems (filter, callback) {
+  $.getJSON(url + '/api/GoogleShop/Items', {filter: {vendor_id: filter.vendor_id, store_id: filter.store_id, status: filter.status}, token: localStorage.token })
+    .done(function (data) { callback(data) })
+    .fail(function (data) {
+      if (data.status == '401') {
+        localStorage.clear()
+        window.location.href = '/'
       }
-    ]
+  })  
+}   
 
-    setTimeout(() => callback(stubItems), 50); 
-  }
 
 /* eslint no-unused-vars: 1 */
 
