@@ -6,9 +6,8 @@ const VendorSummary = ({ vendor, setFilter }) => (
   <div className="row" key={vendor.vendor_id + "-" + vendor.store_id}>
     <div
       className="col-xs-3"
-      onClick={() => setFilter({ vendor: vendor, status: "" })}
     >
-      <span style={{ cursor: "pointer" }}> {vendor.name}</span>{" "}
+      {vendor.name}
     </div>
 
     <div className="col-xs-3" style = {numberContainerStyle}>
