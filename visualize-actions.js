@@ -963,7 +963,7 @@ function GetGoogleSummary (callback) {
 }   
 
 function GetGoogleItems (filter, callback) {
-  $.getJSON(url + '/api/GoogleShop/Items', {filter: {vendor_id: filter.vendor_id, store_id: filter.store_id, status: filter.status}, token: localStorage.token })
+  $.getJSON(url + '/api/GoogleShop/Items', {vendor_id: filter.vendor.vendor_id, store_id: filter.vendor.store_id, status: filter.status, token: localStorage.token })
     .done(function (data) { callback(data) })
     .fail(function (data) {
       if (data.status == '401') {
