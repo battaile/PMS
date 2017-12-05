@@ -9,49 +9,58 @@ const Items = ({ filter, clearFilter, items }) => (
         back
       </a>
     </div>
-    {items && items.map( i => (
-      <div className="panel panel-default" style={{padding: '1em'}} >
-        <div className="row" >
-          <div className="col-xs-8">
-          <div className="form-group">
-            <span> <strong><a href="#"> {i.product_id}</a></strong> </span>
+    {items &&
+      items.map(i => (
+        <div
+          className="panel panel-default"
+          style={{ padding: "1em" }}
+          key={i.product_id}
+        >
+          <div className="row">
+            <div className="col-xs-8">
+              <div className="form-group">
+                <span> <strong><a href="#"> {i.product_id}</a></strong> </span>
+              </div>
+              <div className="form-group">
+                <label htmlFor="title">Title</label>
+                <input
+                  className="form-control"
+                  id="title"
+                  type="text"
+                  defaultValue={i.title}
+                  style={{ width: "25em" }}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="description">Description</label>
+                <input
+                  className="form-control"
+                  id="description"
+                  type="text"
+                  defaultValue={i.description}
+                  style={{ width: "30em" }}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="productType">Product Type</label>
+                <select className="form-control" id="productType">
+                  <option>{i.product_type}</option>
+                  {/* need to load available product types */}
+                </select>
+              </div>
             </div>
-            <div className="form-group">
-              <label htmlFor="title">Title</label>
-              <input className="form-control" id="title"
-                    type="text"
-                    defaultValue={i.title}
-                    style={{width:'25em'}}
-                  />
+            <div className="col-xs-4">
+              {!i.image_link && "Select Image"}
+              {!!i.image_link &&
+                <img
+                  src={i.image_link}
+                  alt="product image"
+                  style={{ height: "20em", width: "20em" }}
+                />}
             </div>
-            <div className="form-group">
-              <label htmlFor="description">Description</label>
-              <input className="form-control" id="description"
-                    type="text"
-                    defaultValue={i.description}
-                    style={{width:'30em'}}
-                  />
-            </div>
-            <div className="form-group">
-              <label htmlFor="productType">Product Type</label>
-              <select className="form-control" id="productType">
-                    <option>{i.product_type}</option>
-                    {/* need to load available product types */}
-                  </select>
-            </div>
-          </div>
-          <div className="col-xs-4">
-            {!i.image_link && "Select Image"}
-            {!!i.image_link &&
-              <img
-                src={i.image_link}
-                alt="product image"
-                style={{ height: "20em", width: "20em" }}
-              />}        
           </div>
         </div>
-      </div>
-    ))}
+      ))}
     {!items && <Loading />}
   </div>
 );

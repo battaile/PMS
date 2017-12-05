@@ -25,15 +25,21 @@ class GoogleShop extends React.Component {
   }
 
   setFilter(filter) {
-    this.setState({ filter });
+    this.setState({ filter, items: null });
+    if (!filter) {
+      return;
+    }
+
     GetGoogleItems(filter, this.itemsCallback);
   }
 
   render() {
     return (
       // <Loadable active={!this.state.stores} spinner text="Loading summary...">
+      (
         <div className="container">
-          {!this.state.filter && this.state.stores &&
+          {!this.state.filter &&
+            this.state.stores &&
             this.state.stores.map(s => (
               <StoreSummary key={s.name} store={s} setFilter={this.setFilter} />
             ))}
@@ -44,6 +50,7 @@ class GoogleShop extends React.Component {
               items={this.state.items}
             />}
         </div>
+      )
       // </Loadable>
     );
   }
