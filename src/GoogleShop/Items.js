@@ -12,7 +12,7 @@ const Items = ({ filter, clearFilter, items }) => (
       </a>
     </div>
     {items &&
-      items.map(i => <Item item={i}/> )}
+      items.map(i => <Item item={i} key={i.product_id}/> )}
     {!items && <Loading />}
   </div>
 );
