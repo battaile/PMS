@@ -1,5 +1,7 @@
 import React, { PropTypes } from "react";
 import Loading from "../Controls/loading";
+import Item from "./Item";
+
 
 const Items = ({ filter, clearFilter, items }) => (
   <div>
@@ -10,77 +12,7 @@ const Items = ({ filter, clearFilter, items }) => (
       </a>
     </div>
     {items &&
-      items.map(i => (
-        <div
-          className="panel panel-default"
-          style={{ padding: "1em" }}
-          key={i.product_id}
-        >
-          <div className="row">
-            <div className="col-xs-8">
-              <div className="form-group">
-                <span> <strong><a href="#"> {i.product_id}</a></strong> </span>
-              </div>
-              <div className="form-group">
-                <label htmlFor="title">Title</label>
-                <input
-                  className="form-control"
-                  id="title"
-                  type="text"
-                  defaultValue={i.title}
-                  style={{ width: "25em" }}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="description">Description</label>
-                <input
-                  className="form-control"
-                  id="description"
-                  type="text"
-                  defaultValue={i.description}
-                  style={{ width: "30em" }}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="productType">Product Type</label>
-                <select className="form-control" id="productType">
-                  <option>{i.product_type}</option>
-                  {/* need to load available product types */}
-                </select>
-              </div>
-              <div className="form-group">
-                <label htmlFor="isValid">Valid?</label>
-                <input
-                  id="isValid"
-                  type="checkbox"
-                  className="form-control"
-                  style ={{width:'2em'}}
-                  defaultChecked={i.is_valid}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="isShopped">Shopping?</label>
-                <input
-                  id="isShopped"
-                  type="checkbox"
-                  className="form-control"
-                  style ={{width:'2em'}}
-                  defaultChecked={i.is_shopped}
-                />
-              </div>
-            </div>
-            <div className="col-xs-4">
-              {!i.image_link && "Select Image"}
-              {!!i.image_link &&
-                <img
-                  src={i.image_link}
-                  alt="product image"
-                  style={{ height: "20em", width: "20em" }}
-                />}
-            </div>
-          </div>
-        </div>
-      ))}
+      items.map(i => <Item item={i}/> )}
     {!items && <Loading />}
   </div>
 );
