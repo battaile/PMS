@@ -1,4 +1,5 @@
 import React from "react";
+import Loadable from "react-loading-overlay";
 // import Loadable from "react-loading-overlay";
 import StoreSummary from "./StoreSummary";
 import Items from "./Items";
@@ -35,7 +36,8 @@ class GoogleShop extends React.Component {
 
   render() {
     return (
-      // <Loadable active={!this.state.stores} spinner text="Loading summary...">
+      
+      <Loadable active={!this.state.stores} spinner text="Loading summary...">
       (
         <div className="container">
           {!this.state.filter &&
@@ -51,7 +53,7 @@ class GoogleShop extends React.Component {
             />}
         </div>
       )
-      // </Loadable>
+      </Loadable>
     );
   }
 }
