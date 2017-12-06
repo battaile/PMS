@@ -48,6 +48,26 @@ const Items = ({ filter, clearFilter, items }) => (
                   {/* need to load available product types */}
                 </select>
               </div>
+              <div className="form-group">
+                <label htmlFor="isValid">Valid?</label>
+                <input
+                  id="isValid"
+                  type="checkbox"
+                  className="form-control"
+                  style ={{width:'2em'}}
+                  defaultChecked={i.is_valid}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="isShopped">Shopping?</label>
+                <input
+                  id="isShopped"
+                  type="checkbox"
+                  className="form-control"
+                  style ={{width:'2em'}}
+                  defaultChecked={i.is_shopped}
+                />
+              </div>
             </div>
             <div className="col-xs-4">
               {!i.image_link && "Select Image"}
