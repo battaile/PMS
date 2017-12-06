@@ -1,5 +1,4 @@
 import React, { PropTypes } from "react";
-import Loading from "../Controls/loading";
 import Item from "./Item";
 
 
@@ -12,8 +11,7 @@ const Items = ({ filter, clearFilter, items }) => (
       </a>
     </div>
     {items &&
-      items.map(i => <Item item={i} key={i.product_id}/> )}
-    {!items && <Loading />}
+      items.map(i => <Item item={i} vendor={filter.vendor} key={i.product_id}/> )}
   </div>
 );
 

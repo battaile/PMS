@@ -1,6 +1,9 @@
 import React, { PropTypes } from "react";
 
-const Item = ({ item }) => (
+const Item = ({ item }) => { 
+  const update = UpdateGoogleItem.bind(null, {vendor_id: item.vendor_id, store_id: item.store_id});
+
+  return (
   <div
     className="panel panel-default"
     style={{ padding: "1em" }}
@@ -19,6 +22,7 @@ const Item = ({ item }) => (
             type="text"
             defaultValue={item.title}
             style={{ width: "25em" }}
+            onBlur={(e) =>  update('title', e.target.value) }
           />
         </div>
         <div className="form-group">
@@ -70,9 +74,10 @@ const Item = ({ item }) => (
       </div>
     </div>
   </div>
-);
+)};
 
 Item.propTypes = {
-  item: PropTypes.object.isRequired
+  item: PropTypes.object.isRequired,
+  vendor: PropTypes.object.isRequired
 }
 export default Item;

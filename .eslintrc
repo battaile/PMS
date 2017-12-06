@@ -23,6 +23,7 @@
     "$": true,
     "setTimeout": true,
     "GetGoogleSummary": true,
-    "GetGoogleItems": true
+    "GetGoogleItems": true,
+    "UpdateGoogleItem": true
   }
 }
