@@ -1,16 +1,14 @@
 import React, { PropTypes } from "react";
 
-const numberContainerStyle = {textAlign: 'right'}
+const numberContainerStyle = { textAlign: "right" };
 
 const VendorSummary = ({ vendor, setFilter }) => (
   <div className="row" key={vendor.vendor_id + "-" + vendor.store_id}>
-    <div
-      className="col-xs-3"
-    >
+    <div className="col-xs-3">
       {vendor.name}
     </div>
 
-    <div className="col-xs-3" style = {numberContainerStyle}>
+    <div className="col-xs-3" style={numberContainerStyle}>
       <span
         style={{ color: "green", cursor: "pointer" }}
         onClick={() => setFilter({ vendor: vendor, status: "shopping" })}
@@ -19,7 +17,7 @@ const VendorSummary = ({ vendor, setFilter }) => (
       </span>
     </div>
 
-    <div className="col-xs-2" style = {numberContainerStyle}>
+    <div className="col-xs-2" style={numberContainerStyle}>
       <span
         style={{ color: "red", cursor: "pointer" }}
         onClick={() => setFilter({ vendor: vendor, status: "invalid" })}
@@ -28,7 +26,7 @@ const VendorSummary = ({ vendor, setFilter }) => (
       </span>
     </div>
 
-    <div className="col-xs-2" style = {numberContainerStyle}>
+    <div className="col-xs-2" style={numberContainerStyle}>
       <span
         style={{ color: "red", cursor: "pointer" }}
         onClick={() => setFilter({ vendor: vendor, status: "unshopped" })}
@@ -37,7 +35,7 @@ const VendorSummary = ({ vendor, setFilter }) => (
       </span>
     </div>
 
-    <div className="col-xs-2" style = {numberContainerStyle}>
+    <div className="col-xs-2" style={numberContainerStyle}>
       <span
         style={{ color: "red", cursor: "pointer" }}
         onClick={() => setFilter({ vendor: vendor, status: "needs_setup" })}

@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react";
 import VendorSummary from "./VendorSummary";
 
-const numbericColumnStyle = {textAlign: 'right'}
+const numbericColumnStyle = { textAlign: "right" };
 
 const StoreSummary = ({ store, setFilter }) => (
   <div style={{ paddingBottom: "2em", width: "50%" }} key={store.name}>
