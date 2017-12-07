@@ -4,7 +4,7 @@ import Item from "./Item";
 
 const Items = ({ filter, clearFilter, items }) => (
   <div>
-    <div>
+    <div style={{paddingBottom: '1em'}}>
       <strong>{filter.vendor.name} {filter.status}</strong>
       <a onClick={clearFilter} style={{ marginLeft: "1em", cursor: "pointer" }}>
         back
