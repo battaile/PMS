@@ -61,7 +61,7 @@ class GoogleShop extends React.Component {
             clearFilter={() => this.setFilter(null)}
             items={this.state.items}
           />}
-        {this.state.backgroundUpdate &&
+        {this.state.backgroundUpdate && !this.state.filter && 
           <div style={{ fontSize: ".8em" }}>...refreshing data</div>}
       </div>
     );

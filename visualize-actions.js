@@ -973,15 +973,15 @@ function GetGoogleItems (filter, callback) {
   })  
 }   
 
-function UpdateGoogleItem (vendor, field, value) {
-  $.getJSON(url + '/api/GoogleShop/UpdateItem', {vendor_id: vendor.vendor_id, store_id: vendor.store_id, field, value })
-    .done(function () { })
-    .fail(function (data) {
-      if (data.status == '401') {
-        localStorage.clear()
-        window.location.href = '/'
-      }
-  })  
-}  
+function UpdateGoogleItem (vendor, product_id, field, value) {
+  $.getJSON(url + '/api/GoogleShop/UpdateItem', {vendor_id: vendor.vendor_id, store_id: vendor.store_id, product_id, field, value, token: localStorage.token })
+  .done(function (data) { })
+  .fail(function (data) {
+    if (data.status == '401') {
+      localStorage.clear()
+      window.location.href = '/'
+    }
+  }) 
+}
 /* eslint no-unused-vars: 1 */
 
