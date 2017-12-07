@@ -40,15 +40,6 @@ class GoogleShop extends React.Component {
         {!this.state.stores &&
           <div>
             Loading stores...
-            {" "}
-            <p style={{ fontSize: ".8em", paddingTop: "1em" }}>
-              dev note: 'Loadable' higher order component had display issues possibly due to unmet peer dependencies.
-              {" "}
-              <br />
-              Revisit if want that look and feel, should be able to get it working with enough time to probe the innards.
-              <br />
-              If not then add our own spinner graphic to display here
-            </p>
           </div>}
         {!this.state.filter &&
           this.state.stores &&
