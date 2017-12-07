@@ -1,7 +1,6 @@
 import React, { PropTypes } from "react";
 
 const Item = ({ item }) => {
-  
   const update = UpdateGoogleItem.bind(
     null,
     {
@@ -69,6 +68,7 @@ const Item = ({ item }) => {
               className="form-control"
               style={{ width: "2em" }}
               defaultChecked={item.is_shopped}
+              onChange={e => update("is_shopped", e.target.checked)}
             />
           </div>
         </div>
