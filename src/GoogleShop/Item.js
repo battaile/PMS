@@ -39,16 +39,9 @@ const Item = ({ item }) => {
               id="description"
               type="text"
               defaultValue={item.description}
-              style={{ width: "30em" }}
+              style={{ width: "45em" }}
               onBlur={e => update("description", e.target.value)}
             />
-          </div>
-          <div className="form-group">
-            <label htmlFor="productType">Product Type</label>
-            <select className="form-control" id="productType">
-              <option>{item.product_type}</option>
-              {/* need to load available product types */}
-            </select>
           </div>
           <div className="form-group">
             <label htmlFor="isValid">Valid?</label>
@@ -88,6 +81,5 @@ const Item = ({ item }) => {
 
 Item.propTypes = {
   item: PropTypes.object.isRequired,
-  vendor: PropTypes.object.isRequired
 };
 export default Item;
