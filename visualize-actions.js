@@ -970,18 +970,28 @@ function GetGoogleItems (filter, callback) {
         localStorage.clear()
         window.location.href = '/'
       }
+      googleError(data, 'GetGoogleItems');
   })  
 }   
 
 function UpdateGoogleItem (vendor, product_id, field, value) {
   $.getJSON(url + '/api/GoogleShop/UpdateItem', {vendor_id: vendor.vendor_id, store_id: vendor.store_id, product_id, field, value, token: localStorage.token })
-  .done(function (data) { })
+  .done(function () { })
   .fail(function (data) {
     if (data.status == '401') {
       localStorage.clear()
       window.location.href = '/'
     }
+    googleError(data, 'UpdateGoogleItem');
   }) 
+}
+
+function googleError(error, method){
+  window.alert(`error code ${error.status} in ${method}`);
+  if (error.status == '0') {
+    localStorage.clear()
+    window.location.href = '/'
+  }
 }
 /* eslint no-unused-vars: 1 */
 
