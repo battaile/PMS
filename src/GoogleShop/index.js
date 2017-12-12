@@ -8,6 +8,7 @@ class GoogleShop extends React.Component {
     this.summaryCallback = this.summaryCallback.bind(this);
     this.itemsCallback = this.itemsCallback.bind(this);
     this.setFilter = this.setFilter.bind(this);
+    this.imageSelection = this.imageSelection.bind(this);
     this.state = { stores: null };
   }
 
@@ -34,24 +35,38 @@ class GoogleShop extends React.Component {
     GetGoogleItems(filter, this.itemsCallback);
   }
 
+  imageSelection(item) {
+    this.setState({ imageSelection: item });
+  }
+
   render() {
     return (
       <div className="container">
+
         {!this.state.stores &&
           <div>
             Loading stores...
           </div>}
+
         {!this.state.filter &&
           this.state.stores &&
           this.state.stores.map(s => (
             <StoreSummary key={s.name} store={s} setFilter={this.setFilter} />
           ))}
-        {this.state.filter &&
+
+        {this.state.filter && 
+          !this.state.imageSelection &&
           <Items
             filter={this.state.filter}
             clearFilter={() => this.setFilter(null)}
             items={this.state.items}
+            imageSelection={this.imageSelection}
           />}
+
+        {this.state.filter && 
+          this.state.imageSelection &&
+          <div>image select</div>
+        }
         {this.state.backgroundUpdate && !this.state.filter && 
           <div style={{ fontSize: ".8em" }}>...refreshing data</div>}
       </div>

@@ -1,6 +1,6 @@
 import React, { PropTypes } from "react";
 
-const Item = ({ item }) => {
+const Item = ({ item, imageSelection }) => {
   const update = UpdateGoogleItem.bind(
     null,
     {
@@ -71,6 +71,7 @@ const Item = ({ item }) => {
             <img
               src={item.image_link}
               alt="product image"
+              onClick={() => imageSelection(item) }
               style={{ height: "20em", width: "20em" }}
             />}
         </div>
@@ -81,5 +82,6 @@ const Item = ({ item }) => {
 
 Item.propTypes = {
   item: PropTypes.object.isRequired,
+  imageSelection: PropTypes.func.isRequired,
 };
 export default Item;
