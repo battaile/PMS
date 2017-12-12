@@ -1,10 +1,9 @@
 import React, { PropTypes } from "react";
 import Item from "./Item";
 
-
 const Items = ({ filter, clearFilter, items, imageSelection }) => (
   <div>
-    <div style={{paddingBottom: '1em'}}>
+    <div style={{ paddingBottom: "1em" }}>
       <strong>{filter.vendor.name} {filter.status}</strong>
       <a onClick={clearFilter} style={{ marginLeft: "1em", cursor: "pointer" }}>
         back
@@ -12,7 +11,9 @@ const Items = ({ filter, clearFilter, items, imageSelection }) => (
     </div>
     {!items && <div>Loading products...</div>}
     {items &&
-      items.map(i => <Item key={i.product_id} item={i} imageSelection={ imageSelection} /> )}
+      items.map(i => (
+        <Item key={i.product_id} item={i} imageSelection={imageSelection} />
+      ))}
   </div>
 );
 
@@ -20,7 +21,7 @@ Items.propTypes = {
   filter: PropTypes.object.isRequired,
   clearFilter: PropTypes.func.isRequired,
   items: PropTypes.array,
-  imageSelection: PropTypes.func.isRequired,
+  imageSelection: PropTypes.func.isRequired
 };
 
 export default Items;

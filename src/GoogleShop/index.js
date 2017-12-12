@@ -54,7 +54,7 @@ class GoogleShop extends React.Component {
             <StoreSummary key={s.name} store={s} setFilter={this.setFilter} />
           ))}
 
-        {this.state.filter && 
+        {this.state.filter &&
           !this.state.imageSelection &&
           <Items
             filter={this.state.filter}
@@ -63,11 +63,12 @@ class GoogleShop extends React.Component {
             imageSelection={this.imageSelection}
           />}
 
-        {this.state.filter && 
+        {this.state.filter &&
           this.state.imageSelection &&
-          <div>image select</div>
-        }
-        {this.state.backgroundUpdate && !this.state.filter && 
+          <div>image select</div>}
+
+        {this.state.backgroundUpdate &&
+          !this.state.filter &&
           <div style={{ fontSize: ".8em" }}>...refreshing data</div>}
       </div>
     );

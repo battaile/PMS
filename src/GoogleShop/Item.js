@@ -71,7 +71,7 @@ const Item = ({ item, imageSelection }) => {
             <img
               src={item.image_link}
               alt="product image"
-              onClick={() => imageSelection(item) }
+              onClick={() => imageSelection(item)}
               style={{ height: "20em", width: "20em" }}
             />}
         </div>
@@ -82,6 +82,6 @@ const Item = ({ item, imageSelection }) => {
 
 Item.propTypes = {
   item: PropTypes.object.isRequired,
-  imageSelection: PropTypes.func.isRequired,
+  imageSelection: PropTypes.func.isRequired
 };
 export default Item;
