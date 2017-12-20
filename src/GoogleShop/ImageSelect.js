@@ -11,7 +11,7 @@ const Image = ({ imageLink, setImage }) => (
         id={imageLink.name}
         style={{ height: 100, width: "auto", cursor: "pointer" }}
         className="form-control"
-        onClick={() => setImage( imageLink.url)}
+        onClick={() => setImage(imageLink.url)}
       />
     </LazyLoad>
   </span>

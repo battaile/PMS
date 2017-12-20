@@ -40,14 +40,19 @@ class GoogleShop extends React.Component {
   }
 
   clearImageSelection() {
-    this.setState({imageLinks: null, selectedItem: null})
+    this.setState({ imageLinks: null, selectedItem: null });
   }
 
   setImage(imageLink) {
     this.state.items.find(
       i => i.product_id === this.state.selectedItem.product_id
     ).image_link = imageLink;
-    UpdateGoogleItem(this.state.filter.vendor, this.state.selectedItem.product_id, 'image_link', imageLink);
+    UpdateGoogleItem(
+      this.state.filter.vendor,
+      this.state.selectedItem.product_id,
+      "image_link",
+      imageLink
+    );
     this.clearImageSelection();
   }
 
