@@ -1,6 +1,7 @@
 import React from "react";
 import StoreSummary from "./StoreSummary";
 import Items from "./Items";
+import ImageSelect from "./ImageSelect";
 
 class GoogleShop extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class GoogleShop extends React.Component {
     this.itemsCallback = this.itemsCallback.bind(this);
     this.setFilter = this.setFilter.bind(this);
     this.imageSelection = this.imageSelection.bind(this);
+    this.imageSelectionCallback = this.imageSelectionCallback.bind(this);
     this.state = { stores: null };
   }
 
@@ -35,8 +37,17 @@ class GoogleShop extends React.Component {
     GetGoogleItems(filter, this.itemsCallback);
   }
 
+  imageSelectionCallback(data) {
+    this.setState({ imageLinks:  data });
+  }
+
   imageSelection(item) {
-    this.setState({ imageSelection: item });
+    this.setState({ imageSelection: { item } });
+    GetGoogleImageLinks(
+      item.vendor_id,
+      item.store_id,
+      this.imageSelectionCallback
+    );
   }
 
   render() {
@@ -64,8 +75,8 @@ class GoogleShop extends React.Component {
           />}
 
         {this.state.filter &&
-          this.state.imageSelection &&
-          <div>image select</div>}
+          this.state.imageLinks &&
+          <ImageSelect imageLinks={this.state.imageLinks} />}
 
         {this.state.backgroundUpdate &&
           !this.state.filter &&

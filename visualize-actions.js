@@ -974,6 +974,18 @@ function GetGoogleItems (filter, callback) {
   })  
 }   
 
+function GetGoogleImageLinks (vendor_id, store_id, callback) {
+  $.getJSON(url + '/api/GoogleShop/ImageLinks', {vendor_id, store_id, token: localStorage.token })
+    .done(function (data) { callback(data) })
+    .fail(function (data) {
+      if (data.status == '401') {
+        localStorage.clear()
+        window.location.href = '/'
+      }
+      googleError(data, 'GetGoogleImageLinks');
+  })  
+}  
+
 function UpdateGoogleItem (vendor, product_id, field, value) {
   $.getJSON(url + '/api/GoogleShop/UpdateItem', {vendor_id: vendor.vendor_id, store_id: vendor.store_id, product_id, field, value, token: localStorage.token })
   .done(function () { })

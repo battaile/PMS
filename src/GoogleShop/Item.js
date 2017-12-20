@@ -72,7 +72,7 @@ const Item = ({ item, imageSelection }) => {
               src={item.image_link}
               alt="product image"
               onClick={() => imageSelection(item)}
-              style={{ height: "20em", width: "20em" }}
+              style={{ height: "20em", width: "20em", cursor: "pointer" }}
             />}
         </div>
       </div>

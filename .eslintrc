@@ -24,6 +24,7 @@
     "setTimeout": true,
     "GetGoogleSummary": true,
     "GetGoogleItems": true,
-    "UpdateGoogleItem": true
+    "UpdateGoogleItem": true,
+    "GetGoogleImageLinks": true
   }
 }
