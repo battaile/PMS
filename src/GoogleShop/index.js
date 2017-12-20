@@ -9,8 +9,10 @@ class GoogleShop extends React.Component {
     this.summaryCallback = this.summaryCallback.bind(this);
     this.itemsCallback = this.itemsCallback.bind(this);
     this.setFilter = this.setFilter.bind(this);
+    this.setImage = this.setImage.bind(this);
     this.imageSelection = this.imageSelection.bind(this);
     this.imageSelectionCallback = this.imageSelectionCallback.bind(this);
+    this.clearImageSelection = this.clearImageSelection.bind(this);
     this.state = { stores: null };
   }
 
@@ -18,8 +20,8 @@ class GoogleShop extends React.Component {
     this.setState({ stores, backgroundUpdate: false });
   }
 
-  itemsCallback(items) {
-    this.setState({ items });
+  itemsCallback(data) {
+    this.setState({ items: data });
   }
 
   componentDidMount() {
@@ -37,12 +39,24 @@ class GoogleShop extends React.Component {
     GetGoogleItems(filter, this.itemsCallback);
   }
 
+  clearImageSelection() {
+    this.setState({imageLinks: null, selectedItem: null})
+  }
+
+  setImage(imageLink) {
+    this.state.items.find(
+      i => i.product_id === this.state.selectedItem.product_id
+    ).image_link = imageLink;
+    UpdateGoogleItem(this.state.filter.vendor, this.state.selectedItem.product_id, 'image_link', imageLink);
+    this.clearImageSelection();
+  }
+
   imageSelectionCallback(data) {
-    this.setState({ imageLinks:  data });
+    this.setState({ imageLinks: data });
   }
 
   imageSelection(item) {
-    this.setState({ imageSelection: { item } });
+    this.setState({ selectedItem: item });
     GetGoogleImageLinks(
       item.vendor_id,
       item.store_id,
@@ -66,7 +80,7 @@ class GoogleShop extends React.Component {
           ))}
 
         {this.state.filter &&
-          !this.state.imageSelection &&
+          !this.state.imageLinks &&
           <Items
             filter={this.state.filter}
             clearFilter={() => this.setFilter(null)}
@@ -76,7 +90,10 @@ class GoogleShop extends React.Component {
 
         {this.state.filter &&
           this.state.imageLinks &&
-          <ImageSelect imageLinks={this.state.imageLinks} />}
+          <ImageSelect
+            imageLinks={this.state.imageLinks}
+            setImage={this.setImage}
+          />}
 
         {this.state.backgroundUpdate &&
           !this.state.filter &&
