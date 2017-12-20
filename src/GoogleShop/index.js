@@ -98,6 +98,7 @@ class GoogleShop extends React.Component {
           <ImageSelect
             imageLinks={this.state.imageLinks}
             setImage={this.setImage}
+            clearImageSelect={this.clearImageSelection}
           />}
 
         {this.state.backgroundUpdate &&

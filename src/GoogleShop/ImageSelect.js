@@ -21,7 +21,7 @@ Image.propTypes = {
   setImage: PropTypes.func.isRequired
 };
 
-const ImageSelect = ({ imageLinks, setImage }) => {
+const ImageSelect = ({ imageLinks, setImage, clearImageSelect }) => {
   let col1 = [], col2 = [], col3 = [], col4 = [];
 
   // there's got to be a better way to do this
@@ -48,7 +48,12 @@ const ImageSelect = ({ imageLinks, setImage }) => {
   }
 
   return (
+    <div>
+            <a onClick={clearImageSelect} style={{ marginLeft: "1em", cursor: "pointer" }}>
+        back
+      </a>
     <div className="row">
+    
       <div className="col-sm-3">
         {col1.map(i => <Image key={i.url} imageLink={i} setImage={setImage} />)}
       </div>
@@ -64,13 +69,14 @@ const ImageSelect = ({ imageLinks, setImage }) => {
       <div className="col-sm-3">
         {col4.map(i => <Image key={i.url} imageLink={i} setImage={setImage} />)}
       </div>
-    </div>
+    </div></div>
   );
 };
 
 ImageSelect.propTypes = {
   imageLinks: PropTypes.array.isRequired,
-  setImage: PropTypes.func.isRequired
+  setImage: PropTypes.func.isRequired,
+  clearImageSelect:PropTypes.func.isRequired,
 };
 
 export default ImageSelect;
