@@ -9,9 +9,8 @@ const StoreSummary = ({ store, setFilter }) => (
     <div className="row">
       <div className="col-xs-3"><strong>{store.name}</strong></div>
       <div className="col-xs-3" style={numbericColumnStyle}>Shopping</div>
-      <div className="col-xs-2" style={numbericColumnStyle}>Invalid</div>
-      <div className="col-xs-2" style={numbericColumnStyle}>Not Shopping</div>
-      <div className="col-xs-2" style={numbericColumnStyle}>Needs Setup</div>
+      <div className="col-xs-3" style={numbericColumnStyle}>Invalid</div>
+      <div className="col-xs-3" style={numbericColumnStyle}>Not Shopping</div>
     </div>
     {store.vendors.map(v => (
       <VendorSummary

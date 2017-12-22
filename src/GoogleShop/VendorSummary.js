@@ -17,7 +17,7 @@ const VendorSummary = ({ vendor, setFilter }) => (
       </span>
     </div>
 
-    <div className="col-xs-2" style={numberContainerStyle}>
+    <div className="col-xs-3" style={numberContainerStyle}>
       <span
         style={{ color: "red", cursor: "pointer" }}
         onClick={() => setFilter({ vendor: vendor, status: "invalid" })}
@@ -26,7 +26,7 @@ const VendorSummary = ({ vendor, setFilter }) => (
       </span>
     </div>
 
-    <div className="col-xs-2" style={numberContainerStyle}>
+    <div className="col-xs-3" style={numberContainerStyle}>
       <span
         style={{ color: "red", cursor: "pointer" }}
         onClick={() => setFilter({ vendor: vendor, status: "unshopped" })}
@@ -35,14 +35,6 @@ const VendorSummary = ({ vendor, setFilter }) => (
       </span>
     </div>
 
-    <div className="col-xs-2" style={numberContainerStyle}>
-      <span
-        style={{ color: "red", cursor: "pointer" }}
-        onClick={() => setFilter({ vendor: vendor, status: "needs_setup" })}
-      >
-        {vendor.needs_setup.toLocaleString()}
-      </span>
-    </div>
   </div>
 );
 
