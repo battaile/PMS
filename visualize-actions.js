@@ -986,9 +986,9 @@ function GetGoogleImageLinks (vendor_id, store_id, callback) {
   })  
 }  
 
-function UpdateGoogleItem (vendor, product_id, field, value) {
+function UpdateGoogleItem (vendor, product_id, callback, field, value ) {
   $.getJSON(url + '/api/GoogleShop/UpdateItem', {vendor_id: vendor.vendor_id, store_id: vendor.store_id, product_id, field, value, token: localStorage.token })
-  .done(function () { })
+  .done(function (data) { callback(data) })
   .fail(function (data) {
     if (data.status == '401') {
       localStorage.clear()

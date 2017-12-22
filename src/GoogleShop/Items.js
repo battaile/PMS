@@ -6,7 +6,8 @@ const Items = ({
   clearFilter,
   items,
   imageSelection,
-  setProductFilter
+  setProductFilter,
+  reload
 }) => (
   <div>
 
@@ -17,12 +18,23 @@ const Items = ({
       </a>
     </div>
     <div style={{ paddingBottom: "1em" }}>
-      <input placeholder="product id" type="text" className="form-control" style={{width:'20em'}} onChange={e => setProductFilter(e.target.value)} />
+      <input
+        placeholder="product id"
+        type="text"
+        className="form-control"
+        style={{ width: "20em" }}
+        onChange={e => setProductFilter(e.target.value)}
+      />
     </div>
     {!items && <div>Loading products...</div>}
     {items &&
       items.map(i => (
-        <Item key={i.product_id} item={i} imageSelection={imageSelection} />
+        <Item
+          key={i.product_id}
+          item={i}
+          imageSelection={imageSelection}
+          reloadItems={reload}
+        />
       ))}
   </div>
 );
@@ -32,6 +44,7 @@ Items.propTypes = {
   clearFilter: PropTypes.func.isRequired,
   items: PropTypes.array,
   imageSelection: PropTypes.func.isRequired,
+  reload: PropTypes.func.isRequired,
   setProductFilter: PropTypes.func.isRequired
 };
 

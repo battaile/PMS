@@ -6,46 +6,41 @@ import ImageSelect from "./ImageSelect";
 class GoogleShop extends React.Component {
   constructor(props) {
     super(props);
-    this.summaryCallback = this.summaryCallback.bind(this);
-    this.itemsCallback = this.itemsCallback.bind(this);
+    this.clearFilter = this.clearFilter.bind(this);
+    this.loadImageSelection = this.loadImageSelection.bind(this);
     this.setFilter = this.setFilter.bind(this);
     this.setImage = this.setImage.bind(this);
-    this.imageSelection = this.imageSelection.bind(this);
-    this.imageSelectionCallback = this.imageSelectionCallback.bind(this);
-    this.clearImageSelection = this.clearImageSelection.bind(this);
+    this.setImageLinks = this.setImageLinks.bind(this);
+    this.setItems = this.setItems.bind(this);
+    this.setSummary = this.setSummary.bind(this);
     this.setProductFilter = this.setProductFilter.bind(this);
+    this.unloadImageSelection = this.unloadImageSelection.bind(this);
     this.state = { stores: null };
   }
 
-  setProductFilter(partialProductId) {
-    this.setState({ productFilter: partialProductId });
-  }
-
-  summaryCallback(stores) {
-    this.setState({ stores, backgroundUpdate: false });
-  }
-
-  itemsCallback(data) {
-    this.setState({ items: data });
-  }
-
   componentDidMount() {
-    GetGoogleSummary(this.summaryCallback);
+    GetGoogleSummary(this.setSummary);
+  }
+
+  clearFilter() {
+    this.setFilter(null);
+    this.setProductFilter(null);
+  }
+
+  loadImageSelection(item) {
+    this.setState({ selectedItem: item });
+    GetGoogleImageLinks(item.vendor_id, item.store_id, this.setImageLinks);
   }
 
   setFilter(filter) {
     this.setState({ filter, items: null });
     if (!filter) {
       this.setState({ backgroundUpdate: true });
-      GetGoogleSummary(this.summaryCallback);
+      GetGoogleSummary(this.setSummary);
       return;
     }
 
-    GetGoogleItems(filter, this.itemsCallback);
-  }
-
-  clearImageSelection() {
-    this.setState({ imageLinks: null, selectedItem: null });
+    GetGoogleItems(filter, this.setItems);
   }
 
   setImage(imageLink) {
@@ -55,23 +50,31 @@ class GoogleShop extends React.Component {
     UpdateGoogleItem(
       this.state.filter.vendor,
       this.state.selectedItem.product_id,
+      null,
       "image_link",
       imageLink
     );
-    this.clearImageSelection();
+    this.unloadImageSelection();
   }
 
-  imageSelectionCallback(data) {
+  setImageLinks(data) {
     this.setState({ imageLinks: data });
   }
 
-  imageSelection(item) {
-    this.setState({ selectedItem: item });
-    GetGoogleImageLinks(
-      item.vendor_id,
-      item.store_id,
-      this.imageSelectionCallback
-    );
+  setItems(data) {
+    this.setState({ items: data });
+  }
+
+  setProductFilter(partialProductId) {
+    this.setState({ productFilter: partialProductId });
+  }
+
+  setSummary(stores) {
+    this.setState({ stores, backgroundUpdate: false });
+  }
+
+  unloadImageSelection() {
+    this.setState({ imageLinks: null, selectedItem: null });
   }
 
   render() {
@@ -92,11 +95,9 @@ class GoogleShop extends React.Component {
         {this.state.filter &&
           !this.state.imageLinks &&
           <Items
+            reload={() => GetGoogleItems(this.state.filter, this.setItems)}
             filter={this.state.filter}
-            clearFilter={() => {
-              this.setFilter(null);
-              this.setProductFilter(null);
-            }}
+            clearFilter={this.clearFilter}
             items={
               this.state.items
                 ? this.state.items.filter(
@@ -106,7 +107,7 @@ class GoogleShop extends React.Component {
                   )
                 : []
             }
-            imageSelection={this.imageSelection}
+            imageSelection={this.loadImageSelection}
             setProductFilter={this.setProductFilter}
           />}
 
@@ -115,7 +116,7 @@ class GoogleShop extends React.Component {
           <ImageSelect
             imageLinks={this.state.imageLinks}
             setImage={this.setImage}
-            clearImageSelect={this.clearImageSelection}
+            clearImageSelect={this.unloadImageSelection}
           />}
 
         {this.state.backgroundUpdate &&

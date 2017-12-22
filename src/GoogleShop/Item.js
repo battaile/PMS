@@ -1,13 +1,14 @@
 import React, { PropTypes } from "react";
 
-const Item = ({ item, imageSelection }) => {
+const Item = ({ item, imageSelection, reloadItems }) => {
   const update = UpdateGoogleItem.bind(
     null,
     {
       vendor_id: item.vendor_id,
       store_id: item.store_id
     },
-    item.product_id
+    item.product_id,
+    reloadItems
   );
 
   return (
@@ -51,6 +52,7 @@ const Item = ({ item, imageSelection }) => {
               className="form-control"
               style={{ width: "2em" }}
               defaultChecked={item.is_valid}
+              onChange={e => update("is_valid", e.target.checked)}
             />
           </div>
           <div className="form-group">
@@ -82,6 +84,7 @@ const Item = ({ item, imageSelection }) => {
 
 Item.propTypes = {
   item: PropTypes.object.isRequired,
-  imageSelection: PropTypes.func.isRequired
+  imageSelection: PropTypes.func.isRequired,
+  reloadItems: PropTypes.func.isRequired
 };
 export default Item;
