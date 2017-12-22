@@ -35,7 +35,7 @@ var SearchModal = React.createClass({
               </div>
               <div className='row'>
                 <div className='col-sm-2'></div>
-                <div className='col-sm-2' style={{marginTop:'10px'}}><button type='button' className='btn btn-primary' onClick={this.search}><span class='glyphicon glyphicon-search'></span> Search</button></div>
+                <div className='col-sm-2' style={{marginTop:'10px'}}><button type='button' className='btn btn-primary' onClick={this.search}><span className='glyphicon glyphicon-search'></span> Search</button></div>
               </div>
 
               <div>

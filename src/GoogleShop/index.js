@@ -13,7 +13,12 @@ class GoogleShop extends React.Component {
     this.imageSelection = this.imageSelection.bind(this);
     this.imageSelectionCallback = this.imageSelectionCallback.bind(this);
     this.clearImageSelection = this.clearImageSelection.bind(this);
+    this.setProductFilter = this.setProductFilter.bind(this);
     this.state = { stores: null };
+  }
+
+  setProductFilter(partialProductId) {
+    this.setState({ productFilter: partialProductId });
   }
 
   summaryCallback(stores) {
@@ -88,9 +93,21 @@ class GoogleShop extends React.Component {
           !this.state.imageLinks &&
           <Items
             filter={this.state.filter}
-            clearFilter={() => this.setFilter(null)}
-            items={this.state.items}
+            clearFilter={() => {
+              this.setFilter(null);
+              this.setProductFilter(null);
+            }}
+            items={
+              this.state.items
+                ? this.state.items.filter(
+                    i =>
+                      !this.state.productFilter ||
+                      i.product_id.includes(this.state.productFilter)
+                  )
+                : []
+            }
             imageSelection={this.imageSelection}
+            setProductFilter={this.setProductFilter}
           />}
 
         {this.state.filter &&

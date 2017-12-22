@@ -154,7 +154,7 @@ var CatalogTree = React.createClass({
         }
       <div className='row'>
         <div className='col-sm-2'>
-          <button type='button' class='btn btn-secondary' onClick={this.showSearchModal}><span className='glyphicon glyphicon-search'></span> Search</button>
+          <button type='button' className='btn btn-secondary' onClick={this.showSearchModal}><span className='glyphicon glyphicon-search'></span> Search</button>
           { this.state.showSearchModal ? <SearchModal handleHideModal={this.handleHideSearchModal} docKey={this.state.docKey} storeId={this.props.selectedStore.value} copyDocKeys={this.state.copyDocKeys} quickMove={this.quickMove} /> : null }
         </div>
         <div className="col-sm-1 col-sm-offset-9">
