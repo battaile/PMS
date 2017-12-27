@@ -1,5 +1,6 @@
 import React from "react";
 import StoreSummary from "./StoreSummary";
+import ItemDetail from "./ItemDetail";
 import Items from "./Items";
 import ImageSelect from "./ImageSelect";
 
@@ -8,6 +9,7 @@ class GoogleShop extends React.Component {
     super(props);
     this.clearFilter = this.clearFilter.bind(this);
     this.loadImageSelection = this.loadImageSelection.bind(this);
+    this.loadItemDetail = this.loadItemDetail.bind(this);
     this.setFilter = this.setFilter.bind(this);
     this.setImage = this.setImage.bind(this);
     this.setImageLinks = this.setImageLinks.bind(this);
@@ -15,6 +17,7 @@ class GoogleShop extends React.Component {
     this.setSummary = this.setSummary.bind(this);
     this.setProductFilter = this.setProductFilter.bind(this);
     this.unloadImageSelection = this.unloadImageSelection.bind(this);
+    this.setItemDetail = this.setItemDetail.bind(this);
     this.state = { stores: null };
   }
 
@@ -30,6 +33,10 @@ class GoogleShop extends React.Component {
   loadImageSelection(item) {
     this.setState({ selectedItem: item });
     GetGoogleImageLinks(item.vendor_id, item.store_id, this.setImageLinks);
+  }
+
+  loadItemDetail(item) {
+    GetGoogleItemDetail(item, this.setItemDetail);
   }
 
   setFilter(filter) {
@@ -59,6 +66,10 @@ class GoogleShop extends React.Component {
 
   setImageLinks(data) {
     this.setState({ imageLinks: data });
+  }
+
+  setItemDetail(data) {
+    this.setState({ itemDetail: data });
   }
 
   setItems(data) {
@@ -92,12 +103,17 @@ class GoogleShop extends React.Component {
             <StoreSummary key={s.name} store={s} setFilter={this.setFilter} />
           ))}
 
+        {this.state.itemDetail &&
+          <ItemDetail itemDetail={this.state.itemDetail} />}
+
         {this.state.filter &&
           !this.state.imageLinks &&
+          !this.state.itemDetail &&
           <Items
             reload={() => GetGoogleItems(this.state.filter, this.setItems)}
             filter={this.state.filter}
             clearFilter={this.clearFilter}
+            loadItemDetail={this.loadItemDetail}
             items={
               this.state.items
                 ? this.state.items.filter(

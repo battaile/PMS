@@ -7,7 +7,8 @@ const Items = ({
   items,
   imageSelection,
   setProductFilter,
-  reload
+  reload,
+  loadItemDetail
 }) => (
   <div>
 
@@ -34,6 +35,7 @@ const Items = ({
           item={i}
           imageSelection={imageSelection}
           reloadItems={reload}
+          loadItemDetail={loadItemDetail}
         />
       ))}
   </div>
@@ -45,7 +47,8 @@ Items.propTypes = {
   items: PropTypes.array,
   imageSelection: PropTypes.func.isRequired,
   reload: PropTypes.func.isRequired,
-  setProductFilter: PropTypes.func.isRequired
+  setProductFilter: PropTypes.func.isRequired,
+  loadItemDetail: PropTypes.func.isRequired,
 };
 
 export default Items;

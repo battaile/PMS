@@ -1,6 +1,6 @@
 import React, { PropTypes } from "react";
 
-const Item = ({ item, imageSelection, reloadItems }) => {
+const Item = ({ item, imageSelection, reloadItems, loadItemDetail }) => {
   const update = UpdateGoogleItem.bind(
     null,
     {
@@ -20,7 +20,13 @@ const Item = ({ item, imageSelection, reloadItems }) => {
       <div className="row">
         <div className="col-xs-8">
           <div className="form-group">
-            <span> <strong><a href="#"> {item.product_id}</a></strong> </span>
+            <span>
+              {" "}
+              <strong>
+                <a onClick={() => loadItemDetail(item)} style={{cursor:'pointer'}}> {item.product_id}</a>
+              </strong>
+              {" "}
+            </span>
           </div>
           <div className="form-group">
             <label htmlFor="title">Title</label>
@@ -85,6 +91,7 @@ const Item = ({ item, imageSelection, reloadItems }) => {
 Item.propTypes = {
   item: PropTypes.object.isRequired,
   imageSelection: PropTypes.func.isRequired,
-  reloadItems: PropTypes.func.isRequired
+  reloadItems: PropTypes.func.isRequired,
+  loadItemDetail: PropTypes.func.isRequired
 };
 export default Item;

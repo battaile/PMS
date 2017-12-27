@@ -962,6 +962,23 @@ function GetGoogleSummary (callback) {
   })  
 }   
 
+function GetGoogleItemDetail (item, callback) {
+  document.body.style.cursor = 'wait';
+  $.getJSON(url + '/api/GoogleShop/ItemDetail', {vendor_id: item.vendor_id, store_id: item.store_id, product_id: item.product_id, token: localStorage.token })
+  .done(function (data) { 
+    document.body.style.cursor = 'auto';
+    callback(data); 
+  })
+  .fail(function (data) {
+    window.setCursor('auto');
+    if (data.status == '401') {
+      localStorage.clear()
+      window.location.href = '/'
+    }
+    googleError(data, 'GetItemDetail');
+})   
+}
+
 function GetGoogleItems (filter, callback) {
   $.getJSON(url + '/api/GoogleShop/Items', {vendor_id: filter.vendor.vendor_id, store_id: filter.vendor.store_id, status: filter.status, token: localStorage.token })
     .done(function (data) { callback(data) })

@@ -23,6 +23,7 @@
     "$": true,
     "setTimeout": true,
     "GetGoogleSummary": true,
+    "GetGoogleItemDetail": true,
     "GetGoogleItems": true,
     "UpdateGoogleItem": true,
     "GetGoogleImageLinks": true
