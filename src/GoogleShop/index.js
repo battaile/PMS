@@ -104,7 +104,7 @@ class GoogleShop extends React.Component {
           ))}
 
         {this.state.itemDetail &&
-          <ItemDetail itemDetail={this.state.itemDetail} />}
+          <ItemDetail itemDetail={this.state.itemDetail} navigateBack={this.setItemDetail.bind(this, null)} />}
 
         {this.state.filter &&
           !this.state.imageLinks &&
