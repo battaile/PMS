@@ -1,5 +1,7 @@
 import React, { PropTypes } from "react";
+import LazyLoad from 'react-lazyload';
 import Item from "./Item";
+
 
 const Items = ({
   filter,
@@ -30,13 +32,14 @@ const Items = ({
     {!items && <div>Loading products...</div>}
     {items &&
       items.map(i => (
+        <LazyLoad>
         <Item
           key={i.product_id}
           item={i}
           imageSelection={imageSelection}
           reloadItems={reload}
           loadItemDetail={loadItemDetail}
-        />
+        /></LazyLoad>
       ))}
   </div>
 );
